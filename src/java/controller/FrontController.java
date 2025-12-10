@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
@@ -38,8 +39,11 @@ public class FrontController extends HttpServlet {
                 default: doDefault(request, response);
             }
         
+        } catch(SQLIntegrityConstraintViolationException ex) {
+            tratarErroIntegridade(request, response, ex);
         } catch(Exception ex) {
             ExceptionLogTrack.getInstance().addLog(ex);
+            tratarErroGenerico(request, response, ex);
         }
         
     }
@@ -64,8 +68,11 @@ public class FrontController extends HttpServlet {
                 default: doDefault(request, response);
             }
         
+        } catch(SQLIntegrityConstraintViolationException ex) {
+            tratarErroIntegridade(request, response, ex);
         } catch(Exception ex) {
             ExceptionLogTrack.getInstance().addLog(ex);
+            tratarErroGenerico(request, response, ex);
         }
         
     }
@@ -405,7 +412,26 @@ public class FrontController extends HttpServlet {
         
         
     } 
+    
+    
+    private void tratarErroIntegridade(HttpServletRequest request, HttpServletResponse response, Exception ex) throws ServletException, IOException {
         
+        ExceptionLogTrack.getInstance().addLog(ex);
+        
+        String mensagem = "Não é possível excluir este registro porque existem outros registros relacionados a ele. ";
+        mensagem += "Por exemplo: não é possível excluir um usuário que tem agendamentos vinculados.";
+        
+        request.setAttribute("mensagem_erro", mensagem);
+        request.getRequestDispatcher("/home/erro.jsp").forward(request, response);
+    }
+    
+    private void tratarErroGenerico(HttpServletRequest request, HttpServletResponse response, Exception ex) throws ServletException, IOException {
+        
+        String mensagem = "Ocorreu um erro inesperado: " + ex.getMessage();
+        
+        request.setAttribute("mensagem_erro", mensagem);
+        request.getRequestDispatcher("/home/erro.jsp").forward(request, response);
+    }
     
         
     private void doDefault(HttpServletRequest request, HttpServletResponse response) throws Exception {

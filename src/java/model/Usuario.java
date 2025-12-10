@@ -59,7 +59,7 @@ public class Usuario extends DataAccessObject {
                 
                 String senhaSal = getId() + senha + getId() / 2;
                 
-                MessageDigest md = MessageDigest.getInstance( "SHA-512" );
+                MessageDigest md = MessageDigest.getInstance( "SHA-256" );
                 String hash = new BigInteger( 1, md.digest( senhaSal.getBytes("UTF-8") ) ).toString(16);
                 
                 this.senha = hash;
