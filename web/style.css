@@ -1,0 +1,256 @@
+/* ========================================
+   SISTEMA DE BARBEARIA - TEMA BARBER POLE
+   Versão Simplificada
+   ======================================== */
+
+/* === CORES === */
+:root {
+    --vermelho: #DC143C;
+    --azul: #003366;
+    --branco: #FFFFFF;
+    --cinza-claro: #F5F5F5;
+}
+
+/* === CONFIGURAÇÕES BÁSICAS === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--cinza-claro);
+    color: #333;
+    padding: 20px;
+}
+
+/* === TÍTULOS === */
+h1 {
+    color: var(--vermelho);
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--branco);
+    border-radius: 8px;
+    border-left: 5px solid var(--vermelho);
+    border-right: 5px solid var(--azul);
+}
+
+/* === MENU === */
+menu {
+    background: var(--branco);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+menu li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+menu li a {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--vermelho), var(--azul));
+    color: var(--branco);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+menu li a:hover {
+    opacity: 0.9;
+}
+
+/* === FORMULÁRIOS === */
+form {
+    background: var(--branco);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--azul);
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--vermelho);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+/* === BOTÕES === */
+input[type="submit"],
+button,
+.botao,
+.botao-voltar {
+    background: var(--vermelho);
+    color: var(--branco);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+input[type="submit"]:hover,
+button:hover,
+.botao:hover,
+.botao-voltar:hover {
+    opacity: 0.9;
+}
+
+/* === TABELAS === */
+table {
+    width: 100%;
+    background: var(--branco);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+thead {
+    background: linear-gradient(135deg, var(--vermelho), var(--azul));
+    color: var(--branco);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+tr:hover {
+    background: var(--cinza-claro);
+}
+
+table a {
+    color: var(--azul);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table a:hover {
+    color: var(--vermelho);
+}
+
+/* === LINK ADICIONAR === */
+a[href*="action=create"] {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: var(--azul);
+    color: var(--branco);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+a[href*="action=create"]:hover {
+    opacity: 0.9;
+}
+
+/* === PÁGINA DE LOGIN === */
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    background: var(--branco);
+    padding: 40px;
+    border-radius: 8px;
+    border-top: 5px solid var(--vermelho);
+    border-bottom: 5px solid var(--azul);
+}
+
+/* === PÁGINA DE ERRO === */
+.erro-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: var(--branco);
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 5px solid var(--vermelho);
+}
+
+.erro-mensagem {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+    border: 1px solid #f5c6cb;
+}
+
+/* === FAIXA BARBER POLE (OPCIONAL) === */
+.barber-stripe {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--vermelho),
+        var(--vermelho) 10px,
+        var(--branco) 10px,
+        var(--branco) 20px,
+        var(--azul) 20px,
+        var(--azul) 30px
+    );
+    height: 5px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* === CAMPOS READONLY === */
+input[readonly] {
+    background: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    menu li {
+        display: block;
+        margin-right: 0;
+    }
+    
+    menu li a {
+        display: block;
+        text-align: center;
+    }
+    
+    form {
+        padding: 20px;
+    }
+}
