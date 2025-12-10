@@ -1,0 +1,4 @@
+<config>
+	<settings verbose="true"/>
+	<database url="jdbc:mysql://localhost:3306/barbearia_bd" user="root" password="root"/><!-- 3307 no ifsp / 3306 pc de casa -->
+</config>
